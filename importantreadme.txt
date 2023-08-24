@@ -34,17 +34,7 @@ By pressing the startGameBtn.
 By pressing the Enter key.
 If the game was previously ended or if it's being started for the first time, all game values should reset.
 
-6. Testing Your Solution with Cypress:
-You must ensure that your solution satisfies the Cypress test cases provided. These tests will validate:
 
-Initial rendering of game elements.
-Starting the game with a button click or the Enter key.
-The updating of the high score.
-Left and right movement of the gun.
-Bullet firing with the spacebar.
-Score incrementation when the target is hit.
-Game termination after 3 consecutive bullet misses.
-Your solution should pass all the tests to be considered correct. Feel free to add additional test cases based on any new game features or logic you introduce.
 
 
 These are our qualification but after this can add additional features for your own practice , like increase speed of target after the score crosses 50 and others
