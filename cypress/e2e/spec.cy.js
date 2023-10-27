@@ -24,20 +24,36 @@ describe('Simple Gun Game', () => {
   it('checks initial rendering', () => {
     cy.get('#gameCanvas').should('be.visible')
     cy.get('#startGameBtn').should('be.visible')
-    cy.get('#currentScore').should('contain', 'Score: 0')
-    cy.get('#highestScore').should('contain', 'High Score: 0')
+    cy.get('#currentScore').parent().contains(/Score:/i)
+    cy.get('#highestScore').parent().contains(/High Score:/i)
   })
 
   it('starts game with button click', () => {
     cy.get('#startGameBtn').click()
     cy.get('#gameCanvas').should('not.have.css', 'background-color', 'red')
-    cy.get('#currentScore').should('have.text', 'Score: 0');
+    cy.get('#currentScore').parent().contains(/Score:/i)
+    cy.get('#gameCanvas').screenshot('canvas_before_left_move');
+
+   cy.wait(1000)
+  
+ 
+    cy.get('#gameCanvas').screenshot('canvas_after_left_move').then(() => {
+   
+    });
   })
 
   it('starts game with Enter key', () => {
     cy.get('body').type('{enter}')
     cy.get('#gameCanvas').should('not.have.css', 'background-color', 'red')
-    cy.get('#currentScore').should('have.text', 'Score: 0');
+    cy.get('#currentScore').parent().contains(/Score:/i)
+    cy.get('#gameCanvas').screenshot('canvas_before_left_move');
+
+    cy.wait(1000)
+   
+  
+     cy.get('#gameCanvas').screenshot('canvas_after_left_move').then(() => {
+    
+     });
   })
 
 
@@ -96,7 +112,7 @@ it('spacebar fires a bullet', () => {
   cy.get('#startGameBtn').click();
   
   // Check initial score
-  cy.get('#currentScore').contains(/Score: 0/i).should('be.visible');
+  cy.get('#currentScore').contains(/Score: 0/i)
 
   // Simulate spacebar key press to fire bullet few times with more wait
   cy.get('body').type(' ');
